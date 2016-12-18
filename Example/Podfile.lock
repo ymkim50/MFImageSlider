@@ -1,0 +1,16 @@
+PODS:
+  - MFImageSlider (0.1.0)
+
+DEPENDENCIES:
+  - MFImageSlider (from `../`)
+
+EXTERNAL SOURCES:
+  MFImageSlider:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MFImageSlider: 91f64f3b36cb9b82cc0fefdce273dbe9855f64eb
+
+PODFILE CHECKSUM: 86777efc960e2946e6e54bad378dcde260ec76ca
+
+COCOAPODS: 1.1.1
