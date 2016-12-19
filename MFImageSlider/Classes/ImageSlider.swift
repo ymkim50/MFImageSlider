@@ -199,7 +199,7 @@ public class FImageSlider: UIView {
 	
 	public init(frame: CGRect, orientation: Orientation) {
 		super.init(frame: frame)
-		
+	
 		self.orientation = orientation
 		initSlider()
 	}
@@ -294,7 +294,8 @@ extension FImageSlider {
 			
 			calcPoint.x = max(0, min(calcPoint.x, self.frame.width))
 			
-			self._value = Float(calcPoint.x / self.frame.width)
+			// value 0 return calcPoint.zero so check NaN
+			self._value = calcPoint.x == 0 ? 0 : Float(calcPoint.x / self.frame.width)
 			self.foregroundView.frame = CGRect(x: 0, y: 0, width: calcPoint.x, height: self.frame.height)
 			
 			if !isHandleHidden {
@@ -359,5 +360,14 @@ extension FImageSlider {
 		}) { (completed) in
 			self.delegate?.sliderValueChangeEnded(slider: self)
 		}
+	}
+}
+
+//	MAKR:	- adjust frmaes for autolayout
+extension FImageSlider {
+	public override func layoutSubviews() {
+		super.layoutSubviews()
+		setValue(value: _value, animated: false, completion: nil)
+		imageView.frame = self.bounds
 	}
 }
